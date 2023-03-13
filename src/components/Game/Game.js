@@ -7,27 +7,35 @@ import { World } from 'components/World';
 // numChunksX: The number of chunks in the X direction
 // numChunksY: The number of chunks in the Y direction
 // tileCount: The number of tiles in each chunk (along each axis)
-// startingColors: An array of starting colors for the chunks
-function generateChunks(numChunksX, numChunksY, tileCount, startingColors) {
+function generateChunks(numChunksX, numChunksY, tileCount) {
   const chunks = {};
 
   for (let x = 0; x < numChunksX; x++) {
     for (let y = 0; y < numChunksY; y++) {
       const tiles = [];
 
-      // Calculate the starting color for this chunk based on the X and Y coordinates
-      const startingColorIndex = (x + y) % startingColors.length;
-      const startingColor = startingColors[startingColorIndex];
-      const r = parseInt(startingColor.substr(1, 2), 16);
-      const g = parseInt(startingColor.substr(3, 2), 16);
-      const b = parseInt(startingColor.substr(5, 2), 16);
-      const colorStep = 255 / (tileCount - 1);
       const className = "Tile";
-
+      let color;
       for (let i = 0; i < tileCount; i++) {
         for (let j = 0; j < tileCount; j++) {
-          // Calculate the color for this tile based on the i and j coordinates
-          const color = `rgb(${Math.round(r - colorStep * i)}, ${Math.round(g - colorStep * (i + j) / 2)}, ${Math.round(b - colorStep * j)})`;
+          if (i === 0 || j === 0 || i === tileCount - 1 || j === tileCount - 1) {
+            // draw a border of rocks around the chunk
+            color = "#4d4d4d";
+          } else {
+            const tileType = Math.floor(Math.random() * 5);
+            if (tileType === 0) {
+              color = "#1b5e20"; // dark green for grass
+            } else if (tileType === 1) {
+              color = "#2c7bb6"; // blue for water
+            } else if (tileType === 2) {
+              color = "#d8d8d8"; // light gray for stone
+            } else if (tileType === 3) {
+              color = "#bfa345"; // sand color
+            } else {
+              color = "#3c3c3c"; // dark gray for dirt
+            }
+          }
+
           tiles.push({ 
             className,
             x,
@@ -56,11 +64,7 @@ function Game() {
   const tileSize = 16;
   const playerX = 2;
   const playerY = 3;
-  const chunks = generateChunks(32, 32, chunkSize, [
-    "#ff0000", "#00ff00", "#0000ff",
-    "#ffff00", "#00ffff", "#ff00ff",
-    "#ff8000", "#0080ff", "#8000ff",
-  ]);
+  const chunks = generateChunks(32, 32, chunkSize);
   const playerStartPosition = {
     x: playerX,
     y: playerY,

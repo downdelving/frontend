@@ -1,0 +1,17 @@
+.Tile {
+  position: absolute;
+  width: 32px;
+  height: 16px;
+}
+
+.Tile-grass {
+  background-color: #27ae60;
+}
+
+.Tile-stone {
+  background-color: #bdc3c7;
+}
+
+.Tile-water {
+  background-color: #3498db;
+}

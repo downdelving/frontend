@@ -1,0 +1,19 @@
+:root {
+  --offset-x: 0;
+  --offset-y: 0;
+}
+
+/*
+  Centers the world in the viewport.
+  Rotates the world 60 degrees on the X axis and 45 degrees on the Z axis to
+  create a 3D isometric effect.
+*/
+.World {
+  position: relative;
+  width: 100vh;
+  height: 100vh;
+  transform: translateX(calc(var(--offset-x) * -1 * 1%)) translateY(calc(var(--offset-y) * -1 * 1%)) rotateX(60deg) rotateZ(45deg);
+  transform-origin: center center;
+  transition: transform 0.2s ease-in-out;
+  z-index: 1;
+}

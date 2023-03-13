@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import Game from './Game';
 
-test('renders learn react link', () => {
+// Test that the Game component renders.
+test('renders world component', () => {
   render(<Game />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // Check for existence of the world element.
+  const worldElement = screen.getByTestId('world');
+  expect(worldElement).toBeInTheDocument();
 });

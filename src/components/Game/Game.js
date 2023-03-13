@@ -54,8 +54,8 @@ function Game() {
   const [offsetY, setOffsetY] = useState(0);
   const chunkSize = 16;
   const tileSize = 16;
-  const playerX = 36;
-  const playerY = 92;
+  const playerX = 2;
+  const playerY = 3;
   const chunks = generateChunks(32, 32, chunkSize, [
     "#ff0000", "#00ff00", "#0000ff",
     "#ffff00", "#00ffff", "#ff00ff",
@@ -69,19 +69,15 @@ function Game() {
   };
   function handleKeyDown(event) {
     if (event.key === "ArrowUp") {
-      console.log("ArrowUp", offsetX, offsetY);
       setOffsetX(offsetX - 1);
       setOffsetY(offsetY - 1);
     } else if (event.key === "ArrowDown") {
-      console.log("ArrowDown", offsetX, offsetY);
       setOffsetX(offsetX + 1);
       setOffsetY(offsetY + 1);
     } else if (event.key === "ArrowLeft") {
-      console.log("ArrowLeft", offsetX, offsetY);
       setOffsetX(offsetX - 1);
       setOffsetY(offsetY + 1);
     } else if (event.key === "ArrowRight") {
-      console.log("ArrowRight", offsetX, offsetY);
       setOffsetX(offsetX + 1);
       setOffsetY(offsetY - 1);
     }

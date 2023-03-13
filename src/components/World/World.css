@@ -1,5 +1,7 @@
 :root {
+  /* The x-offset of the world in the viewport. */
   --offset-x: 0;
+  /* The y-offset of the world in the viewport. */
   --offset-y: 0;
 }
 

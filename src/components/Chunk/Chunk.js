@@ -1,11 +1,9 @@
 import React from "react";
 import { Tile } from "components/Tile";
 
-function Chunk({ x, y, tileCount, tileSize, tiles }) {
+function Chunk({ x, y, chunkSize, tileSize, tiles }) {
   const style = {
     position: "absolute",
-    left: x * tileSize * tileCount,
-    top: y * tileSize * tileCount,
     width: tileSize,
     height: tileSize,
   };
